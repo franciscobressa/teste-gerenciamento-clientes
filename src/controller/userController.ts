@@ -1,6 +1,5 @@
-import express, { Router, Request, Response } from "express";
-
-const userService = require("../services/userService");
+import { Request, Response } from "express";
+import * as userService from "../services/userService";
 
 export interface User {
   id: number;
@@ -12,7 +11,9 @@ export interface User {
 }
 
 export const getUsers = async (req: Request, res: Response): Promise<void> => {
-  const users = await userService.getUsers();
+  const filter = req.query;
+  console.log(filter);
+  const users = await userService.getUsers(filter);
   res.send(users);
 };
 

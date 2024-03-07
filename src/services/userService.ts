@@ -1,11 +1,35 @@
 import pool from "../database";
 import { User } from "../controller/userController";
+import { QueryResult } from "pg";
 
-export const getUsers: () => Promise<User[]> = async (): Promise<User[]> => {
+interface UserFilter {
+  nome?: string;
+  email?: string;
+  telefone?: string;
+}
+
+export const getUsers: (filter?: UserFilter) => Promise<User[]> = async (
+  filter?: UserFilter
+): Promise<User[]> => {
   const client = await pool.connect();
 
   try {
-    const result = await client.query("SELECT * FROM public.user");
+    let query = 'SELECT * FROM public."user"';
+
+    if (filter) {
+      const conditions: string[] = [];
+
+      if (filter.nome) conditions.push(`nome ILIKE '%${filter.nome}%'`);
+      if (filter.email) conditions.push(`email ILIKE '%${filter.email}%'`);
+      if (filter.telefone)
+        conditions.push(`telefone ILIKE '%${filter.telefone}%'`);
+
+      if (conditions.length > 0) {
+        query += ` WHERE ${conditions.join(" OR ")}`;
+      }
+    }
+
+    const result: QueryResult = await client.query(query);
     console.log(result.rows);
     return result.rows;
   } finally {
