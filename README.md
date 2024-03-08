@@ -14,6 +14,7 @@ Este é um sistema de gerenciamento de clientes com backend em Node.js e Postgre
 
 - React 18.2.0
 - Vite 5.1.4
+- Material UI 5.15.12
 - Node.js 20.11.0
 - Typescript 5.4.2
 - PostgreSQL
