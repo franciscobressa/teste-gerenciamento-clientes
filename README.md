@@ -2,13 +2,13 @@
 
 Este é um sistema de gerenciamento de clientes com backend em Node.js e PostgreSQL, e frontend em React.
 
--   [Requisitos](#requisitos)
--   [Implementação](#implementação)
-    -   [Passo 1 : Configuração do Banco de Dados](#passo-1--configuração-do-banco-de-dados)
-    -   [Passo 2 : Configuração do Backend](#passo-2--configuração-do-backend)
-    -   [Passo 2 : Configuração do Frontend](#passo-3--configuração-do-frontend)
--   [Rotas da Api](#rotas-da-api)
-  
+- [Requisitos](#requisitos)
+- [Implementação](#implementação)
+  - [Passo 1 : Configuração do Banco de Dados](#passo-1--configuração-do-banco-de-dados)
+  - [Passo 2 : Configuração do Backend](#passo-2--configuração-do-backend)
+  - [Passo 2 : Configuração do Frontend](#passo-3--configuração-do-frontend)
+- [Rotas da Api](#rotas-da-api)
+
 ## Requisitos
 
 - Node.js
@@ -66,7 +66,7 @@ DB_PORT=sua_porta
 4. Execute o backend:
 
 ```bash
-npm run start:dev
+npm run dev
 ```
 
 O backend estará disponível em http://localhost:5000.
@@ -93,12 +93,12 @@ npm run start
 
 O frontend estará disponível em http://localhost:3000.
 
-
 ### Rotas da Api
 
 [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=&uri=https%3A%2F%2Fraw.githubusercontent.com%2Ffranciscobressa%2Fteste-gerenciamento-clientes%2Fmain%2Fbackend%2FInsomnia_2024-03-08.json%3Ftoken%3DGHSAT0AAAAAACM5TKAEGY47GJR3JKPCORSKZPLGLXA)
 
 #### 1. Obter Usuários
+
 - **Endpoint:** `GET /users`
 - **Descrição:** Recupera uma lista de usuários com base em parâmetros de consulta opcionais.
 - **Parâmetros de Consulta:**
@@ -119,12 +119,13 @@ O frontend estará disponível em http://localhost:3000.
       "telefone": "+1234567890",
       "coordenada_x": 10,
       "coordenada_y": 20
-    },
+    }
     // ... outros usuários
   ]
   ```
 
 #### 2. Criar Usuário
+
 - **Endpoint:** `POST /users`
 - **Descrição:** Cria um novo usuário com as informações fornecidas.
 - **Corpo da Solicitação (Request Body):**
