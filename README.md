@@ -28,7 +28,7 @@ CREATE DATABASE gerenciamento_clientes;
 3. Execute o DDL para criar a tabela de clientes.
 
 ```sql
-CREATE TABLE cliente (
+CREATE TABLE user (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL,
