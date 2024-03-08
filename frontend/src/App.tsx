@@ -1,35 +1,77 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import "./style.css";
+import {
+  Box,
+  Container,
+  List,
+  ListItem,
+  ListItemText,
+  Stack,
+  Typography,
+} from "@mui/material";
+import getUsers from "./services/getUsers";
 
 function App() {
-  const [count, setCount] = useState(0)
+  interface User {
+    id: number;
+    nome: string;
+    email: string;
+    telefone: string;
+    coordenada_x: number;
+    coordenada_y: number;
+  }
+
+  const [users, setUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    const handleGetUsers = async () => {
+      const data: User[] = await getUsers();
+      setUsers(data);
+    };
+
+    handleGetUsers();
+  }, []);
+
+  if (!users) {
+    return (
+      <Typography color={"white"} textAlign={"center"}>
+        Nenhum Cliente encontrado
+      </Typography>
+    );
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Container>
+      <Stack spacing={2}>
+        <Header />
+        <Box p={1} borderRadius={2} sx={{ backgroundColor: "#2f3349" }}>
+          <List>
+            {users.map((user) => {
+              return (
+                <>
+                  <ListItem color={"white"} key={user.id}>
+                    <ListItemText>
+                      <Typography color={"white"}>{user.nome}</Typography>
+                    </ListItemText>
+                  </ListItem>
+                </>
+              );
+            })}
+          </List>
+        </Box>
+      </Stack>
+    </Container>
+  );
 }
 
-export default App
+const Header = () => {
+  return (
+    <Box p={2} borderRadius={2} sx={{ backgroundColor: "#2f3349" }}>
+      <Typography color={"white"} fontWeight={"bold"}>
+        Clientes
+      </Typography>
+    </Box>
+  );
+};
+
+export default App;
