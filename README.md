@@ -1,16 +1,34 @@
-# API - Sistema de Gerenciamento de Clientes
+# Sistema de Gerenciamento de Clientes
 
-Esta é a API do backend de gerenciamento de clientes feito com Node e Typescript
+Este é um sistema de gerenciamento de clientes com backend em Node.js e PostgreSQL, e frontend em React.
 
-Você pode acessar o repositório do frontend em react clicando aqui.
+-   [Requisitos](#requisitos)
+-   [Implementação](#implementação)
+    -   [Passo 1 : Configuração do Banco de Dados](#passo-1--configuração-do-banco-de-dados)
+    -   [Passo 2 : Configuração do Backend](#passo-2--configuração-do-backend)
+    -   [Passo 2 : Configuração do Frontend](#passo-3--configuração-do-frontend)
+-   [Rotas da Api](#rotas-da-api)
+  
+## Requisitos
 
-## Configuração do Banco de Dados
+- Node.js
+- PostgreSQL
+
+## Implementação
+
+### Passo 1 : Configuração do Banco de Dados
 
 1. Instale o PostgreSQL em seu sistema.
 2. Crie um banco de dados chamado `gerenciamento_clientes`.
-3. Execute o DDL para criar a tabela de users.
+
 ```sql
-CREATE TABLE user (
+CREATE DATABASE gerenciamento_clientes;
+```
+
+3. Execute o DDL para criar a tabela de clientes.
+
+```sql
+CREATE TABLE cliente (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL,
@@ -20,15 +38,21 @@ CREATE TABLE user (
 );
 ```
 
-## Configuração do Backend
+### Passo 2 : Configuração do Backend
 
-1. Instale as dependências:
+1. Navegue até o diretório `backend`:
+
+```bash
+cd backend
+```
+
+2. Instale as dependências:
 
 ```bash
 npm install
 ```
 
-1. Configure as variáveis de ambiente criando um arquivo `.env` com as seguintes informações:
+3. Configure as variáveis de ambiente criando um arquivo `.env` com as seguintes informações:
 
 ```plaintext
 PORT=5000
@@ -47,7 +71,32 @@ npm run start:dev
 
 O backend estará disponível em http://localhost:5000.
 
-### Documentação Endpoints
+### Passo 3 : Configuração do Frontend
+
+1. Navegue até o diretório `frontend`:
+
+```bash
+cd frontend
+```
+
+2. Instale as dependências:
+
+```bash
+npm install
+```
+
+3. Execute o frontend:
+
+```bash
+npm run start
+```
+
+O frontend estará disponível em http://localhost:3000.
+
+
+### Rotas da Api
+
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=&uri=https%3A%2F%2Fraw.githubusercontent.com%2Ffranciscobressa%2Fteste-gerenciamento-clientes%2Fmain%2Fbackend%2FInsomnia_2024-03-08.json%3Ftoken%3DGHSAT0AAAAAACM5TKAEGY47GJR3JKPCORSKZPLGLXA)
 
 #### 1. Obter Usuários
 - **Endpoint:** `GET /users`
