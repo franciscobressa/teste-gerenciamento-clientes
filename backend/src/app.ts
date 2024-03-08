@@ -1,7 +1,10 @@
 import express from "express";
 import { router } from "./router";
+
 import dotenv from "dotenv";
 dotenv.config();
+
+import cors from "cors";
 
 export class App {
   public server: express.Application;
@@ -14,6 +17,7 @@ export class App {
 
   private middleware() {
     this.server.use(express.json());
+    this.server.use(cors());
   }
 
   private router() {
