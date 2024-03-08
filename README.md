@@ -66,7 +66,7 @@ DB_PORT=sua_porta
 4. Execute o backend:
 
 ```bash
-npm run dev
+npm run start:dev
 ```
 
 O backend estará disponível em http://localhost:5000.
@@ -88,7 +88,7 @@ npm install
 3. Execute o frontend:
 
 ```bash
-npm run start
+npm run dev
 ```
 
 O frontend estará disponível em http://localhost:3000.
