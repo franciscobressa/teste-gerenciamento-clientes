@@ -2,16 +2,20 @@
 
 Este é um sistema de gerenciamento de clientes com backend em Node.js e PostgreSQL, e frontend em React.
 
-- [Requisitos](#requisitos)
+- [Requisitos e Principais Feramentas](#requisitos-e-principais-ferramentas)
+- [Ferranbtas](#requisitos)
 - [Implementação](#implementação)
   - [Passo 1 : Configuração do Banco de Dados](#passo-1--configuração-do-banco-de-dados)
   - [Passo 2 : Configuração do Backend](#passo-2--configuração-do-backend)
   - [Passo 2 : Configuração do Frontend](#passo-3--configuração-do-frontend)
 - [Rotas da Api](#rotas-da-api)
 
-## Requisitos
+## Requisitos e Ferramentas
 
-- Node.js
+- React 18.2.0
+- Vite 5.1.4
+- Node.js 20.11.0
+- Typescript 5.4.2
 - PostgreSQL
 
 ## Implementação
@@ -91,7 +95,7 @@ npm install
 npm run dev
 ```
 
-O frontend estará disponível em http://localhost:3000.
+O frontend estará disponível em http://localhost:5173.
 
 ### Rotas da Api
 
