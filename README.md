@@ -10,7 +10,7 @@ Este é um sistema de gerenciamento de clientes com backend em Node.js e Postgre
   - [Passo 2 : Configuração do Frontend](#passo-3--configuração-do-frontend)
 - [Rotas da Api](#rotas-da-api)
 
-## Requisitos e Ferramentas
+## Requisitos e Principais Ferramentas
 
 - React 18.2.0
 - Vite 5.1.4
