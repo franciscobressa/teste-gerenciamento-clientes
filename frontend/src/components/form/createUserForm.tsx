@@ -6,7 +6,7 @@ import {
   SxProps,
   Stack,
 } from "@mui/material";
-import { User, createUser, getUsers } from "../../store/actions/user";
+import { createUser, getUsers } from "../../store/actions/user";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -44,8 +44,13 @@ const CreateUserForm = () => {
     nome: Yup.string().required("Campo obrigatório"),
     email: Yup.string().email("Email inválido").required("Campo obrigatório"),
     telefone: Yup.string().required("Campo obrigatório"),
-    coordenada_x: Yup.number().required("Campo obrigatório"),
-    coordenada_y: Yup.number().required("Campo obrigatório"),
+    coordenada_x: Yup.number()
+      .integer("Deve ser um número inteiro")
+      .required("Campo obrigatório"),
+    coordenada_y: Yup.number()
+      .integer("Deve ser um número inteiro")
+      .required("Campo obrigatório")
+      .typeError("Deve ser um número inteiro"),
   });
 
   return (
@@ -85,8 +90,8 @@ const CreateUserForm = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.nome}
-                error={Boolean(formik.errors.nome)}
-                helperText={formik.errors.nome}
+                error={formik.touched.nome && Boolean(formik.errors.nome)}
+                helperText={formik.touched.nome && formik.errors.nome}
               />
               <TextField
                 label="Email"
@@ -97,8 +102,8 @@ const CreateUserForm = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
-                error={Boolean(formik.errors.email)}
-                helperText={formik.errors.email}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
               />
               <TextField
                 label="Telefone"
@@ -109,8 +114,10 @@ const CreateUserForm = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.telefone}
-                error={Boolean(formik.errors.telefone)}
-                helperText={formik.errors.telefone}
+                error={
+                  formik.touched.telefone && Boolean(formik.errors.telefone)
+                }
+                helperText={formik.touched.telefone && formik.errors.telefone}
               />
               <TextField
                 label="Coordenada X"
@@ -121,8 +128,13 @@ const CreateUserForm = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.coordenada_x}
-                error={Boolean(formik.errors.coordenada_x)}
-                helperText={formik.errors.coordenada_x}
+                error={
+                  formik.touched.coordenada_x &&
+                  Boolean(formik.errors.coordenada_x)
+                }
+                helperText={
+                  formik.touched.coordenada_x && formik.errors.coordenada_x
+                }
               />
               <TextField
                 label="Coordenada Y"
@@ -133,8 +145,13 @@ const CreateUserForm = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.coordenada_y}
-                error={Boolean(formik.errors.coordenada_y)}
-                helperText={formik.errors.coordenada_y}
+                error={
+                  formik.touched.coordenada_y &&
+                  Boolean(formik.errors.coordenada_y)
+                }
+                helperText={
+                  formik.touched.coordenada_y && formik.errors.coordenada_y
+                }
               />
               <Button
                 variant="contained"
