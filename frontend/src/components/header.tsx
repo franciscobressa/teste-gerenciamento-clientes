@@ -55,7 +55,8 @@ const Header = () => {
 
   return (
     <Box
-      p={2}
+      py={1}
+      px={2}
       borderRadius={2}
       display={"flex"}
       justifyContent={"space-between"}
@@ -63,7 +64,7 @@ const Header = () => {
       flexWrap={"wrap"}
       sx={{ backgroundColor: "#2f3349" }}
     >
-      <Typography color={"white"} fontWeight={"bold"} mb={2}>
+      <Typography color={"white"} fontWeight={"bold"} my={2}>
         Clientes
       </Typography>
       <Stack direction="row" spacing={2}>
