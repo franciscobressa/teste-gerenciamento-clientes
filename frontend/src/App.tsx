@@ -5,6 +5,7 @@ import { getUsers } from "./store/actions/user";
 import Header from "./components/header";
 import UsersList from "./components/usersList";
 import { useAppDispatch } from "./hooks/useAppDispatch";
+import SearchUsers from "./components/searchUsers";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -21,6 +22,7 @@ function App() {
     <Container>
       <Stack spacing={2}>
         <Header />
+        <SearchUsers />
         <UsersList />
       </Stack>
     </Container>

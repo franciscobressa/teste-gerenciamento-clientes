@@ -11,10 +11,12 @@ export interface User {
   coordenada_y: number;
 }
 
-const getUsers = async (): Promise<PayloadAction<User[]>> => {
+const getUsers = async (
+  search: string = ""
+): Promise<PayloadAction<User[]>> => {
   const response: AxiosResponse = await axios({
     method: "get",
-    url: "http://localhost:5000/user",
+    url: `http://localhost:5000/user?nome=${search}&email=${search}&telefone=${search}`,
   });
 
   return setUsersList(response.data);
