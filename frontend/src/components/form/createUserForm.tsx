@@ -69,8 +69,6 @@ const CreateUserForm = () => {
       coordenada_x: 0,
       coordenada_y: 0,
     });
-
-    console.log("Form submitted:", formData);
   };
 
   return (

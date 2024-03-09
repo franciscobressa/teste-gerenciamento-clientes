@@ -34,7 +34,6 @@ const createUser = async (newUser: User) => {
   });
 
   await getUsers();
-  console.log(response);
 };
 
 export { getUsers, createUser };

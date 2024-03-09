@@ -30,7 +30,6 @@ export const getUsers: (filter?: UserFilter) => Promise<User[]> = async (
     }
 
     const result: QueryResult = await client.query(query);
-    console.log(result.rows);
     return result.rows;
   } finally {
     client.release();
@@ -52,7 +51,6 @@ export const createUser = async (newUser: User) => {
       ]
     );
 
-    console.log("User created:", result.rows[0]);
     return result.rows[0];
   } finally {
     client.release();

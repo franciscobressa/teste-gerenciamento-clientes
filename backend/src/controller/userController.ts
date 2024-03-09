@@ -12,7 +12,6 @@ export interface User {
 
 export const getUsers = async (req: Request, res: Response): Promise<void> => {
   const filter = req.query;
-  console.log(filter);
   const users = await userService.getUsers(filter);
   res.send(users);
 };
