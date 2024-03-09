@@ -85,7 +85,7 @@ const UsersList = () => {
               <br />
               Email: {users[selectedUser].email}
               <br />
-              Telefone: {users[selectedUser].id}
+              Telefone: {users[selectedUser].telefone}
               <br />
               Coordenadas: ({users[selectedUser].coordenada_x},{" "}
               {users[selectedUser].coordenada_y})
