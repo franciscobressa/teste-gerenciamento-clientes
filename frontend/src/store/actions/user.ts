@@ -3,7 +3,7 @@ import { setUsersList } from "../reducers/user";
 import { PayloadAction } from "@reduxjs/toolkit";
 
 export interface User {
-  id: number;
+  id?: number;
   nome: string;
   email: string;
   telefone: string;
@@ -20,4 +20,19 @@ const getUsers = async (): Promise<PayloadAction<User[]>> => {
   return setUsersList(response.data);
 };
 
-export default getUsers;
+const createUser = async (newUser: User) => {
+  const response: AxiosResponse = await axios({
+    method: "post",
+    url: "http://localhost:5000/user",
+    data: {
+      ...newUser,
+      coordenada_x: Number(newUser.coordenada_x),
+      coordenada_y: Number(newUser.coordenada_y),
+    },
+  });
+
+  await getUsers();
+  console.log(response);
+};
+
+export { getUsers, createUser };
