@@ -166,7 +166,7 @@ O frontend estará disponível em http://localhost:5173.
   }
   ```
   
-#### 2. Deletar Usuário
+#### 3. Deletar Usuário
 
 - **Endpoint:** `DELETE /users/:id`
 - **Descrição:** Deleta um usuário pelo ID.
