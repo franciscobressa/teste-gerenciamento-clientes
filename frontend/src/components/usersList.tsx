@@ -11,6 +11,7 @@ import { useAppSelector } from "../hooks/useAppSelector";
 import { User } from "../store/actions/user";
 import InfoIcon from "@mui/icons-material/Info";
 import { useState } from "react";
+import { Delete } from "@mui/icons-material";
 
 const UsersList = () => {
   const [open, setOpen] = useState(false);
@@ -55,6 +56,9 @@ const UsersList = () => {
               <ListItemText>
                 <Typography color={"white"}>{user.nome}</Typography>
               </ListItemText>
+              <Button onClick={() => openUserDetails(index)} color="error">
+                <Delete />
+              </Button>
               <Button onClick={() => openUserDetails(index)} color="info">
                 <InfoIcon />
               </Button>
