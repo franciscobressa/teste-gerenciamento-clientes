@@ -2,12 +2,17 @@
 
 Este é um sistema de gerenciamento de clientes com backend em Node.js e PostgreSQL, e frontend em React.
 
+
+Vídeo explicativo sobre o teste técnico: [Francisco Bressa - Teste de Programação Desenvolvedor Facilita Jurídico](https://www.youtube.com/watch?v=7u1oAg-ePho)
+
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/7u1oAg-ePho/0.jpg
+)](https://www.youtube.com/watch?v=7u1oAg-ePho)
+
 - [Requisitos e Principais Feramentas](#requisitos-e-principais-ferramentas)
-- [Ferranbtas](#requisitos)
 - [Implementação](#implementação)
   - [Passo 1 : Configuração do Banco de Dados](#passo-1--configuração-do-banco-de-dados)
   - [Passo 2 : Configuração do Backend](#passo-2--configuração-do-backend)
-  - [Passo 2 : Configuração do Frontend](#passo-3--configuração-do-frontend)
+  - [Passo 3 : Configuração do Frontend](#passo-3--configuração-do-frontend)
 - [Rotas da Api](#rotas-da-api)
 
 ## Requisitos e Principais Ferramentas
@@ -171,7 +176,7 @@ O frontend estará disponível em http://localhost:5173.
 - **Endpoint:** `DELETE /users/:id`
 - **Descrição:** Deleta um usuário pelo ID.
 - **Parâmetros da Solicitação (Request Parameters):**
-  ```json
+  ```
     {id}: O ID do usuário a ser excluído.
   ```
 - **Exemplo de Solicitação:**
