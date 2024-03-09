@@ -12,7 +12,7 @@ Vídeo explicativo sobre o teste técnico: [Francisco Bressa - Teste de Programa
 - [Implementação](#implementação)
   - [Passo 1 : Configuração do Banco de Dados](#passo-1--configuração-do-banco-de-dados)
   - [Passo 2 : Configuração do Backend](#passo-2--configuração-do-backend)
-  - [Passo 2 : Configuração do Frontend](#passo-3--configuração-do-frontend)
+  - [Passo 3 : Configuração do Frontend](#passo-3--configuração-do-frontend)
 - [Rotas da Api](#rotas-da-api)
 
 ## Requisitos e Principais Ferramentas
