@@ -77,7 +77,7 @@ const UsersList = () => {
       </List>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
-          {selectedUser !== null && (
+          {selectedUser !== null && users[selectedUser] && (
             <Box>
               ID: {users[selectedUser].id}
               <br />
