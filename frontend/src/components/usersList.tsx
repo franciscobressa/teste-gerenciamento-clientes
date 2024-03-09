@@ -8,12 +8,14 @@ import {
   Typography,
 } from "@mui/material";
 import { useAppSelector } from "../hooks/useAppSelector";
-import { User } from "../store/actions/user";
+import { User, deleteUser, getUsers } from "../store/actions/user";
 import InfoIcon from "@mui/icons-material/Info";
 import { useState } from "react";
 import { Delete } from "@mui/icons-material";
+import { useAppDispatch } from "../hooks/useAppDispatch";
 
 const UsersList = () => {
+  const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -27,10 +29,10 @@ const UsersList = () => {
 
   const users: User[] = useAppSelector((state) => state.user.list);
 
-  if (!users) {
+  if (users.length === 0) {
     return (
       <Typography color={"white"} textAlign={"center"}>
-        Nenhum Cliente encontrado
+        Nenhum usuário cadastrado
       </Typography>
     );
   }
@@ -56,7 +58,14 @@ const UsersList = () => {
               <ListItemText>
                 <Typography color={"white"}>{user.nome}</Typography>
               </ListItemText>
-              <Button onClick={() => openUserDetails(index)} color="error">
+              <Button
+                onClick={async () =>
+                  await deleteUser(Number(user.id)).then(async () => {
+                    dispatch(await getUsers());
+                  })
+                }
+                color="error"
+              >
                 <Delete />
               </Button>
               <Button onClick={() => openUserDetails(index)} color="info">

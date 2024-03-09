@@ -23,17 +23,34 @@ const getUsers = async (
 };
 
 const createUser = async (newUser: User) => {
-  const response: AxiosResponse = await axios({
-    method: "post",
-    url: "http://localhost:5000/user",
-    data: {
-      ...newUser,
-      coordenada_x: Number(newUser.coordenada_x),
-      coordenada_y: Number(newUser.coordenada_y),
-    },
-  });
+  try {
+    await axios({
+      method: "post",
+      url: "http://localhost:5000/user",
+      data: {
+        ...newUser,
+        coordenada_x: Number(newUser.coordenada_x),
+        coordenada_y: Number(newUser.coordenada_y),
+      },
+    });
+  } catch (e) {
+    console.error(e);
+  }
 
   await getUsers();
 };
 
-export { getUsers, createUser };
+const deleteUser = async (id: number) => {
+  try {
+    await axios({
+      method: "delete",
+      url: `http://localhost:5000/user/${id}`,
+    });
+  } catch (e) {
+    console.error(e);
+  }
+
+  await getUsers();
+};
+
+export { getUsers, createUser, deleteUser };
