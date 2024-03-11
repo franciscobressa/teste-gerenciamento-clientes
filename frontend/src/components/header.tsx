@@ -2,7 +2,7 @@ import { Box, Button, Modal, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import CreateUserForm from "./form/createUserForm";
 import { useAppSelector } from "../hooks/useAppSelector";
-import { User } from "../store/actions/user";
+import { User, calcularRota } from "../store/actions/user";
 
 const style = {
   position: "absolute" as "absolute",
@@ -17,25 +17,6 @@ const style = {
   borderRadius: "0.5em",
 };
 
-function calcularDistancia(x: number, y: number): number {
-  return Math.sqrt(x * x + y * y);
-}
-
-function ordenarPorProximidadeAoCentro(users: User[]): User[] {
-  return users.slice().sort((userA, userB) => {
-    const distanciaA = calcularDistancia(
-      userA.coordenada_x,
-      userA.coordenada_y
-    );
-    const distanciaB = calcularDistancia(
-      userB.coordenada_x,
-      userB.coordenada_y
-    );
-
-    return distanciaA - distanciaB;
-  });
-}
-
 const Header = () => {
   const users: User[] = useAppSelector((state) => state.user.list);
   const [usersOrdenados, setUsersOrdenados] = useState(users);
@@ -48,9 +29,15 @@ const Header = () => {
   const handleOpenRota = () => setOpenRota(true);
   const handleCloseRota = () => setOpenRota(false);
 
-  const ordenarUsuarios = () => {
+  const handleCalcularRota = async () => {
+    const visitacaoOrdem: any = await calcularRota();
+    console.log(visitacaoOrdem);
+    return visitacaoOrdem;
+  };
+
+  const ordenarUsuarios = async () => {
     handleOpenRota();
-    setUsersOrdenados(ordenarPorProximidadeAoCentro(users));
+    setUsersOrdenados(await handleCalcularRota());
   };
 
   return (
@@ -69,7 +56,7 @@ const Header = () => {
       </Typography>
       <Stack direction="row" spacing={2}>
         <Button onClick={ordenarUsuarios} variant="contained" color="info">
-          Calcular Rota
+          Calcular Menor Rota
         </Button>
         <Button onClick={handleOpen} variant="contained" color="success">
           + Adicionar Cliente
@@ -95,14 +82,22 @@ const Header = () => {
       >
         <Box sx={style}>
           <Stack spacing={3}>
-            <Typography align="center">Ordem Visitação</Typography>
-
-            {usersOrdenados.map((user, index) => (
-              <Typography key={index}>
-                {index + 1}. {user.nome} ({user.coordenada_x} ,{" "}
-                {user.coordenada_y})
-              </Typography>
-            ))}
+            <Typography align="center" fontWeight={"bold"} variant={"h5"}>
+              Ordem Visitação
+            </Typography>
+            <Typography align="center" m={"0 !important"}>
+              Cálculo da menor rota possível para visitar todos os clientes
+            </Typography>
+            {usersOrdenados.map(
+              (_user, index) =>
+                index % 2 === 0 && (
+                  <Typography key={index}>
+                    {usersOrdenados[index].nome} (
+                    {usersOrdenados[index].coordenada_x} ,{" "}
+                    {usersOrdenados[index].coordenada_y})
+                  </Typography>
+                )
+            )}
           </Stack>
         </Box>
       </Modal>

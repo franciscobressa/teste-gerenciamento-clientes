@@ -22,6 +22,15 @@ const getUsers = async (
   return setUsersList(response.data);
 };
 
+const calcularRota = async (): Promise<PayloadAction<User[]>> => {
+  const response: AxiosResponse = await axios({
+    method: "get",
+    url: `http://localhost:5000/user/calcular-rota`,
+  });
+
+  return response.data;
+};
+
 const createUser = async (newUser: User) => {
   try {
     await axios({
@@ -36,8 +45,6 @@ const createUser = async (newUser: User) => {
   } catch (e) {
     console.error(e);
   }
-
-  await getUsers();
 };
 
 const deleteUser = async (id: number) => {
@@ -49,8 +56,6 @@ const deleteUser = async (id: number) => {
   } catch (e) {
     console.error(e);
   }
-
-  await getUsers();
 };
 
-export { getUsers, createUser, deleteUser };
+export { getUsers, createUser, deleteUser, calcularRota };

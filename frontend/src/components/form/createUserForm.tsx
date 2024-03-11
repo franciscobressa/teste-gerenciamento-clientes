@@ -55,9 +55,10 @@ const CreateUserForm = () => {
 
   return (
     <Container>
-      <Typography mb={3} align="center">
-        Criar Novo Usuário
+      <Typography align="center" fontWeight={"bold"} variant={"h5"} mb={2}>
+        Cadastrar Novo Cliente
       </Typography>
+
       <Formik
         initialValues={{
           nome: "",
