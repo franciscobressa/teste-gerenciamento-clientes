@@ -105,9 +105,32 @@ O frontend estará disponível em http://localhost:5173.
 
 ### Rotas da Api
 
-[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=&uri=https%3A%2F%2Fraw.githubusercontent.com%2Ffranciscobressa%2Fteste-gerenciamento-clientes%2Fmain%2Fbackend%2FInsomnia_2024-03-09.json%3Ftoken%3DGHSAT0AAAAAACM5TKAETIXATR4GQLQEQOX6ZPMTZ2Q)
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=&uri=https%3A%2F%2Fraw.githubusercontent.com%2Ffranciscobressa%2Fteste-gerenciamento-clientes%2Fmain%2Fbackend%2FInsomnia_2024-03-11.json)
 
-#### 1. Obter Usuários
+#### 1. Calcular Menor Rota
+
+- **Endpoint:** `GET /users/calcular-rota`
+- **Descrição:** Retorna um array com a ordem de visitação de todos os clientes traçando o menor caminho possível.
+- **Exemplo de Solicitação:**
+  ```bash
+  GET /users/calcular-rota
+  ```
+- **Exemplo de Resposta:**
+  ```json
+  [
+    {
+      "id": 1,
+      "nome": "John",
+      "email": "john@example.com",
+      "telefone": "+1234567890",
+      "coordenada_x": 10,
+      "coordenada_y": 20
+    }
+    // ... outros usuários
+  ]
+  ```
+  
+#### 2. Obter Usuários
 
 - **Endpoint:** `GET /users`
 - **Descrição:** Recupera uma lista de usuários com base em parâmetros de consulta opcionais.
@@ -134,7 +157,7 @@ O frontend estará disponível em http://localhost:5173.
   ]
   ```
 
-#### 2. Criar Usuário
+#### 3. Criar Usuário
 
 - **Endpoint:** `POST /users`
 - **Descrição:** Cria um novo usuário com as informações fornecidas.
@@ -171,7 +194,7 @@ O frontend estará disponível em http://localhost:5173.
   }
   ```
   
-#### 3. Deletar Usuário
+#### 4. Deletar Usuário
 
 - **Endpoint:** `DELETE /users/:id`
 - **Descrição:** Deleta um usuário pelo ID.
