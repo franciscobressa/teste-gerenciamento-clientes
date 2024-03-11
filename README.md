@@ -105,7 +105,7 @@ O frontend estará disponível em http://localhost:5173.
 
 ### Rotas da Api
 
-[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=&uri=https%3A%2F%2Fraw.githubusercontent.com%2Ffranciscobressa%2Fteste-gerenciamento-clientes%2Fmain%2Fbackend%2FInsomnia_2024-03-09.json%3Ftoken%3DGHSAT0AAAAAACM5TKAF3YCIEXYNYHPQPEBQZPMRGAQ)
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=&uri=https%3A%2F%2Fraw.githubusercontent.com%2Ffranciscobressa%2Fteste-gerenciamento-clientes%2Fmain%2Fbackend%2FInsomnia_2024-03-09.json%3Ftoken%3DGHSAT0AAAAAACM5TKAETIXATR4GQLQEQOX6ZPMTZ2Q)
 
 #### 1. Obter Usuários
 
