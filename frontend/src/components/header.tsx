@@ -1,4 +1,14 @@
-import { Box, Button, Modal, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Modal,
+  Stack,
+  Step,
+  StepContent,
+  StepLabel,
+  Stepper,
+  Typography,
+} from "@mui/material";
 import { useState } from "react";
 import CreateUserForm from "./form/createUserForm";
 import { useAppSelector } from "../hooks/useAppSelector";
@@ -31,7 +41,6 @@ const Header = () => {
 
   const handleCalcularRota = async () => {
     const visitacaoOrdem: any = await calcularRota();
-    console.log(visitacaoOrdem);
     return visitacaoOrdem;
   };
 
@@ -88,16 +97,24 @@ const Header = () => {
             <Typography align="center" m={"0 !important"}>
               Cálculo da menor rota possível para visitar todos os clientes
             </Typography>
-            {usersOrdenados.map(
-              (_user, index) =>
-                index % 2 === 0 && (
-                  <Typography key={index}>
-                    {usersOrdenados[index].nome} (
-                    {usersOrdenados[index].coordenada_x} ,{" "}
-                    {usersOrdenados[index].coordenada_y})
-                  </Typography>
-                )
-            )}
+
+            <Box sx={{ maxWidth: 400 }}>
+              <Stepper orientation="vertical">
+                {usersOrdenados.map(
+                  (user, index) =>
+                    index % 2 === 0 && (
+                      <Step key={user.id}>
+                        <StepLabel color="white">
+                          <Typography color="white">
+                            {user.nome} ({user.coordenada_x} ,{" "}
+                            {user.coordenada_y})
+                          </Typography>
+                        </StepLabel>
+                      </Step>
+                    )
+                )}
+              </Stepper>
+            </Box>
           </Stack>
         </Box>
       </Modal>
