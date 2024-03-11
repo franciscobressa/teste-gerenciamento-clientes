@@ -76,3 +76,55 @@ export const deleteUser = async (id: number) => {
     client.release();
   }
 };
+
+export const calcularRota = async () => {
+  const users = await getUsers();
+
+  const usuariosOrdenados = ordenarUsuariosPorMenorCaminho(users);
+
+  return usuariosOrdenados;
+};
+
+function calcularDistancia(pontoA: User, pontoB: User) {
+  const deltaX = pontoA.coordenada_x - pontoB.coordenada_x;
+  const deltaY = pontoA.coordenada_y - pontoB.coordenada_y;
+  return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+}
+
+function ordenarUsuariosPorMenorCaminho(users: User[]) {
+  const resultado: User[] = [];
+  const naoVisitados = [...users];
+
+  // Escolher o primeiro usuário como ponto de partida
+  let userAtual: User | undefined = naoVisitados.shift();
+
+  while (userAtual) {
+    resultado.push(userAtual);
+
+    // Encontrar o vizinho mais próximo até que todos os usuários sejam visitados
+    if (naoVisitados.length > 0) {
+      let distanciaMinima = Number.MAX_VALUE;
+      let nextUser: User | undefined = undefined;
+
+      for (const usuario of naoVisitados) {
+        const distancia = calcularDistancia(userAtual, usuario);
+
+        if (distancia < distanciaMinima) {
+          distanciaMinima = distancia;
+          nextUser = usuario;
+        }
+      }
+
+      if (nextUser) {
+        resultado.push(nextUser);
+        userAtual = naoVisitados.splice(naoVisitados.indexOf(nextUser), 1)[0];
+      } else {
+        userAtual = undefined;
+      }
+    } else {
+      userAtual = undefined;
+    }
+  }
+
+  return resultado;
+}

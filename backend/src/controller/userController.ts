@@ -26,7 +26,6 @@ export const createUser = async (req: Request, res: Response) => {
   res.send(user);
 };
 
-// controller
 export const deleteUser = async (req: Request, res: Response) => {
   const userId = Number(req.params.id);
 
@@ -38,4 +37,12 @@ export const deleteUser = async (req: Request, res: Response) => {
       message: `Usuário com ID ${userId} não encontrado`,
     });
   }
+};
+
+export const calcularRota = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const users = await userService.calcularRota();
+  res.send(users);
 };
